@@ -1,5 +1,4 @@
 import math
-import os
 import datetime
 
 def menu():
@@ -14,7 +13,7 @@ def menu():
 def endlessPrimes():
     a = 3
     primes = [2]
-    while a<100000000000000:
+    while True:
         count = -1
         while 1==1:
             if math.sqrt(len(primes))<=(count+1):
@@ -29,7 +28,6 @@ def endlessPrimes():
     primes = []
 
 def limit():
-    os.system("cls")
     limit = input("Print the largest prime less than: ")
     limit = int(limit)
     datetime1 = datetime.datetime.now()
@@ -41,10 +39,6 @@ def limit():
             ##check if enough prime factors for the current
             ##...number has been check if so it is prime
             if math.sqrt(len(primes))<=(count+1):
-                if(len(primes)%500==0):
-                    os.system("cls")
-                    print("Print the largest prime less than: "+str(limit))
-                    print(a)
                 primes.append(a)
                 break
             ##else check more prime factors
@@ -54,21 +48,18 @@ def limit():
             if a%primes[count]==0:
                 break
         a=a+1
-    os.system("cls")
-    print("Print the largest prime less than: "+str(limit))
     datetime2 = datetime.datetime.now()
     timeDif = calTimeDif(datetime1,datetime2)
     print(str(primes[len(primes)-1]))
     print("Time: "+timeDif)
     primes = []
-    os.system("pause")
+    input("Press enter to continue...")
 
 def calTimeDif(datetime1, datetime2):
     timeDif = datetime2-datetime1
     return str(timeDif)
 
 def primeDistrbution():
-    os.system("cls")
     limit = input("limit(grouped by 100s): ")
     limit = int(limit)+1
     datetime1 = datetime.datetime.now()
@@ -77,12 +68,12 @@ def primeDistrbution():
     ##number of primes in that row
     rowSum=1
     print("100s",end="")
-    print("-*-",end="")
+    print("\t-*-",end="")
     while a<limit:
         count = -1
         if(a%100==0):
             print(str(rowSum),end="")
-            print("\n"+str(a+100)+"s",end="")
+            print("\n"+str(a+100)+"s\t",end="")
             rowSum=0
         while 1==1:
             ##check if enough prime factors for the current
@@ -104,11 +95,10 @@ def primeDistrbution():
     timeDif = calTimeDif(datetime1,datetime2)
     print("\nTime: "+timeDif)
     primes = []
-    os.system("pause")
+    input("Press enter to continue...")
 
 ##compares average primes to composite numbers as a increases
 def ratioPrimesToComposite():
-    os.system("cls")
     limit = input("limit: ")
     limit = int(limit)
     datetime1 = datetime.datetime.now()
@@ -145,7 +135,7 @@ def ratioPrimesToComposite():
     print("Rate of Change of Primes to Composite Numbers Over "+str(a)+" Numbers:\n"+str(derivativeOfRatio))
     print("Time: "+timeDif)
     primes = []
-    os.system("pause")
+    input("Press enter to continue...")
 
 def rateOfChangeOfRatio(array):
     derivativeArray = []
@@ -161,7 +151,6 @@ def rateOfChangeOfRatio(array):
 #Main Program
 loop=1    
 while(loop==1):
-    os.system("cls")
     menuOption = menu()
     if(menuOption=="1"):
         endlessPrimes()
@@ -175,4 +164,3 @@ while(loop==1):
         loop=0
     else:
         print("Invalid Input!")
-        os.system("timeout 2")
